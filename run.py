@@ -13,7 +13,6 @@ logging.basicConfig(
 
 PROD_WEBHOOK_URL = secrets.PROD_WEBHOOK_URL
 TEST_WEBHOOK_URL = secrets.TEST_WEBHOOK_URL
-
 WEBHOOK_URL = TEST_WEBHOOK_URL
 HEADERS = {"Content-Type": "application/json"}
 TEXT = """
