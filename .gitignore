@@ -1,2 +1,5 @@
 env/
 .vscode/
+secrets.py
+slackbot.log
+__pycache__/
