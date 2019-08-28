@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 HOST=13.211.109.142
 
 echo ">>> Setting up server"
@@ -15,10 +16,13 @@ echo ">>> Copying files"
 scp ./requirements.txt root@${HOST}:/srv/slackbot/
 scp ./run.py root@${HOST}:/srv/slackbot/
 scp ./secrets.py root@${HOST}:/srv/slackbot/
+scp ./setup-cron.py root@${HOST}:/srv/slackbot/
+scp ./run.sh root@${HOST}:/srv/slackbot/
 echo ">>> Installing requirements"
 ssh root@${HOST} /bin/bash << EOF
     . /srv/slackbot/env/bin/activate
     pip3 install -r /srv/slackbot/requirements.txt
-    echo "DONE"
+    echo ">>> Setting up cron job"
+    python3 /srv/slackbot/setup-cron.py
 EOF
-echo "DOUBLE DONE"
+echo ">>> Deployment finished"

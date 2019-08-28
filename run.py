@@ -4,7 +4,7 @@ import logging
 import secrets
 
 logging.basicConfig(
-    filename="slackbot.log",
+    filename="/srv/slackbot/slackbot.log",
     filemode="a",
     format="[%(asctime)s] %(message)s",
     datefmt="%d-%m-%Y %H:%M:%S",
@@ -13,7 +13,7 @@ logging.basicConfig(
 
 PROD_WEBHOOK_URL = secrets.PROD_WEBHOOK_URL
 TEST_WEBHOOK_URL = secrets.TEST_WEBHOOK_URL
-WEBHOOK_URL = TEST_WEBHOOK_URL
+WEBHOOK_URL = PROD_WEBHOOK_URL  # WARNING - THIS WILL ANNOY PEOPLE
 HEADERS = {"Content-Type": "application/json"}
 TEXT = """
 Hi <!channel>!
